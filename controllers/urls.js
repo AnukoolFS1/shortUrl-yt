@@ -13,7 +13,7 @@ const handleUrl = async (req, res) => {
 }
 
 const saveUrl = async (req, res) => {
-    const {url, redirect} = req.body;
+    const {url} = req.body;
 
     const newEntry = {url, redirect};
 
