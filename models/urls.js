@@ -9,6 +9,10 @@ const urls = new Schema({
     url : {
         type: String,
         required: true
+    },
+    visitHistory: {
+        type: Number,
+        default: 0,
     }
 }, { timestamps: true })
 

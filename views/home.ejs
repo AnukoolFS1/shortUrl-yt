@@ -7,12 +7,32 @@
 </head>
 <body>
     <h1>Short URLs</h1>
-    <ul>
-        <% data.forEach((url) => { console.log(url)%>
-            <li>
-                <%= url.url %> - <a href=<%= url.url%>><%= url.shortId %></a>
-            </li>
-        <%}) %>
-    </ul>
+    <input type="text" placeholder="Enter your website">
+
+    <table border="1" cellpadding="20">
+        <thead>
+            <tr>
+                <th>shortID</th>
+                <th>Url</th>
+                <th>Clicks</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.forEach((url)=> {%>
+                <tr>
+                    <td>
+                       <a href=<%="http://localhost:8080/" + url.shortId %>> http://localhost:8080/<%= url.shortId %></a>
+                    </td>
+                    <td>
+                        <%= url.url %>
+                    </td>
+                    <td>
+                        <%= url.visitHistory%>
+                    </td>
+                </tr>
+                <%}) %>
+        </tbody>
+    </table>
 </body>
+
 </html>

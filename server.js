@@ -14,7 +14,9 @@ app.use(express.urlencoded({extended:false}))
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-
+app.get('/', (req,res) => {
+    res.redirect('/urls')
+})
 app.use('/urls', urlRoute)
 
 
