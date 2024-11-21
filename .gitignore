@@ -1,0 +1,23 @@
+# Node modules
+/node_modules/
+
+# Log files
+*.log
+
+# Environment files
+.env
+
+# Build output
+/dist/
+/build/
+
+/.vscode/        # VS Code specific files
+.idea/           # JetBrains IDEs specific files
+
+# Operating system files
+.DS_Store        # macOS specific
+Thumbs.db        # Windows specific
+
+# Dependencies
+package-lock.json
+yarn.lock
