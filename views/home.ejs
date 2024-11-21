@@ -10,7 +10,7 @@
     <ul>
         <% data.forEach((url) => { console.log(url)%>
             <li>
-                <%= url.url %> - <%= url.shortId %>
+                <%= url.url %> - <a href=<%= url.url%>><%= url.shortId %></a>
             </li>
         <%}) %>
     </ul>
