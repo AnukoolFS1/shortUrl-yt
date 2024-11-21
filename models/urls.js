@@ -6,10 +6,12 @@ const urls = new Schema({
         type: String,
         required: true
     },
-    redirect : {
+    url : {
         type: String,
         required: true
     }
 }, { timestamps: true })
 
 const URLS = new mongoose.model("urls", urls)
+
+module.exports = URLS

@@ -7,6 +7,12 @@
 </head>
 <body>
     <h1>Short URLs</h1>
-
+    <ul>
+        <% data.forEach((url) => { console.log(url)%>
+            <li>
+                <%= url.url %> - <%= url.shortId %>
+            </li>
+        <%}) %>
+    </ul>
 </body>
 </html>
