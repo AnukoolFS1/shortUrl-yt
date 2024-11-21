@@ -28,4 +28,12 @@ const saveUrl = async (req, res) => {
     }
 }
 
-module.exports = { handleUrl, saveUrl }
+const visitUrl = async (req, res) => {
+    const shortId = req.params.url;
+    const data = await URLS.findOne({shortId});
+
+    await URLS.findByIdAndUpdate({_id:data._id}, {$inc: {visitHistory:1}})
+    res.redirect(data.url)
+}
+
+module.exports = { handleUrl, saveUrl, visitUrl }
