@@ -1,9 +1,17 @@
 const tokens = new Map()
 
-const genrateToken = () => {
-    tokens.set()
+const genrateToken = (id, value) => {
+    tokens.set(id, value)
+
 }
+
 
 const checkAuthentication = (key) => {
-
+    if(tokens.has(id)){
+        return tokens.get(id)
+    }else{
+        return false
+    }
 }
+
+module.exports = {genrateToken, checkAuthentication}
