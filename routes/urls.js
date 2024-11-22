@@ -5,4 +5,6 @@ route.get('/', handleUrl)
 route.get('/:url', visitUrl)
 route.post('/', saveUrl)
 
+route.get()
+
 module.exports = route

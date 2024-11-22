@@ -7,7 +7,10 @@
 </head>
 <body>
     <h1>Short URLs</h1>
-    <input type="text" placeholder="Enter your website">
+    <form action="/urls" method="post">
+        <input type="text" placeholder="Enter your website" name="url">
+        <button>Submit</button>
+    </form>
 
     <table border="1" cellpadding="20">
         <thead>
