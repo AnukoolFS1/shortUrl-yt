@@ -4,18 +4,15 @@ const { genrateToken } = require('./auth')
 
 const handleLogin = async (req, res) => {
     const { email, password } = req.body;
-    console.log('erw')
     try {
         const user = await Users.findOne({ email, password })
 
-        console.log(user)
         if (!user) res.render("login")
         else {
             const token = uuid.v4()
             genrateToken(token, user)
             res.cookie("token", token)
-            // res.redirect("/urls")
-            res.redirect('/')
+            res.redirect("/urls")
         }
     }
     catch (err) {
@@ -31,7 +28,6 @@ const handleSignup = async (req, res) => {
     try {
         const user = new Users({ name, email, password });
         await user.save();
-        console.log('324')
         res.redirect('/users/login')
     } catch (err) {
         console.log(err.message);

@@ -6,7 +6,7 @@ const genrateToken = (id, value) => {
 }
 
 
-const checkAuthentication = (key) => {
+const checkAuthentication = (id) => {
     if(tokens.has(id)){
         return tokens.get(id)
     }else{

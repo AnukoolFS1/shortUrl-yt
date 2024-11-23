@@ -6,6 +6,7 @@ const urlRoute = require('./routes/urls')
 const userRoute = require('./routes/login')
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const authenticate = require('./middleware/authentication')
 PORT = process.env.PORT || 3001
 
 DbConnection()
@@ -20,7 +21,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.get('/', (req,res) => {
     res.redirect('/users/login')
 })
-app.use('/urls', urlRoute)
+app.use('/urls', authenticate, urlRoute)
 app.use('/users', userRoute)
 
 

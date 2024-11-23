@@ -2,7 +2,7 @@ const URLS = require('../models/urls');
 const shortid = require('shortid')
 const handleUrl = async (req, res) => {
     try {
-        const urls = await URLS.find({})
+        const urls = await URLS.find({createdBy:req.user._id})
 
         res.render("home", { data: urls })
     } catch (err) {
@@ -12,11 +12,10 @@ const handleUrl = async (req, res) => {
 }
 
 const saveUrl = async (req, res) => {
-    console.log(req.body)
     const { url } = req.body;
     const shortId = shortid.generate(url)
 
-    const newEntry = { url, shortId };
+    const newEntry = { url, shortId, createdBy: req.user._id };
 
     try {
         const data = new URLS(newEntry);
