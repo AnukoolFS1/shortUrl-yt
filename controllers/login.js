@@ -9,8 +9,7 @@ const handleLogin = async (req, res) => {
 
         if (!user) res.render("login")
         else {
-            const token = uuid.v4()
-            genrateToken(token, user)
+            const token = genrateToken(user)
             res.cookie("token", token)
             res.redirect("/urls")
         }

@@ -3,7 +3,7 @@ const shortid = require('shortid')
 const handleUrl = async (req, res) => {
     try {
         const urls = await URLS.find({createdBy:req.user._id})
-
+        console.log(urls)
         res.render("home", { data: urls })
     } catch (err) {
         res.status(500).json({ msg: "something went wrong" })

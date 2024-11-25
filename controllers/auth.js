@@ -1,14 +1,19 @@
-const tokens = new Map()
+require('dotenv').config()
+const jwt = require('jsonwebtoken');
 
-const genrateToken = (id, value) => {
-    tokens.set(id, value)
+const secretKey = process.env.JWT_KEY
 
+const genrateToken = (user) => {
+    console.log(user)
+
+    return jwt.sign({...user}, secretKey)
 }
 
 
 const checkAuthentication = (id) => {
-    if(tokens.has(id)){
-        return tokens.get(id)
+
+    if(id){
+        return jwt.verify(id, secretKey)
     }else{
         return false
     }
