@@ -4,9 +4,8 @@ const jwt = require('jsonwebtoken');
 const secretKey = process.env.JWT_KEY
 
 const genrateToken = (user) => {
-    console.log(user)
 
-    return jwt.sign({...user}, secretKey)
+    return jwt.sign({id:user._id, email: user.email}, secretKey)
 }
 
 

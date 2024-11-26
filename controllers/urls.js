@@ -2,7 +2,7 @@ const URLS = require('../models/urls');
 const shortid = require('shortid')
 const handleUrl = async (req, res) => {
     try {
-        const urls = await URLS.find({createdBy:req.user._id})
+        const urls = await URLS.find({createdBy:req.user.id})
         console.log(urls)
         res.render("home", { data: urls })
     } catch (err) {

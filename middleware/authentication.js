@@ -8,7 +8,7 @@ const authenticate = (req, res, next) => {
     if(!entry) {
         res.redirect('/')
     }else{
-        req.user = entry._doc
+        req.user = entry
         next()
     }
 }
