@@ -1,16 +1,28 @@
 const URLS = require('../models/urls');
 const shortid = require('shortid')
 
-const handleUrl = async (req, res) => {
-    try {
-        const urls = await URLS.find({createdBy:req.user.id});
-        res.render("home", { data: urls });
-    } catch (err) {
-        res.status(500).json({ msg: "something went wrong" });
+function handleUrl() {
+
+    function checkAuthorization(user) {
+
+        if (user.role === "admin") {
+            return URLS.find({});
+        } else {
+            return URLS.find({ createdBy: user.id });
+        }
     }
 
-}
+    return async (req, res) => {
+        try {
+            const urls = await checkAuthorization(req.user)
+            res.render("home", { data: urls });
+        } catch (err) {
+            console.log(err)
+            res.status(500).json({ msg: "something went wrong" });
+        }
 
+    }
+}
 
 const saveUrl = async (req, res) => {
     const { url } = req.body;
@@ -38,8 +50,8 @@ const visitUrl = async (req, res) => {
         await URLS.findByIdAndUpdate({ _id: data._id }, { $inc: { visitHistory: 1 } });
         res.redirect(data.url)
     }
-    catch(err){
-        
+    catch (err) {
+
         res.redirect('/urls');
     }
 }
