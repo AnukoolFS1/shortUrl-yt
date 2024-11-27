@@ -1,13 +1,12 @@
-const {checkAuthentication} = require('../controllers/auth');
+const { checkAuthentication } = require('../controllers/auth');
 
 const authenticate = (req, res, next) => {
     const token = req.cookies.token;
-   
+
     const entry = checkAuthentication(token)
-    console.log(entry, 'asdfqe')
-    if(!entry) {
+    if (!entry) {
         res.redirect('/')
-    }else{
+    } else {
         req.user = entry
         next()
     }

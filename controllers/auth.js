@@ -5,7 +5,7 @@ const secretKey = process.env.JWT_KEY
 
 const genrateToken = (user) => {
 
-    return jwt.sign({id:user._id, email: user.email}, secretKey)
+    return jwt.sign({id:user._id, email: user.email, role: user.role}, secretKey)
 }
 
 
