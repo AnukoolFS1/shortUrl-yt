@@ -3,6 +3,8 @@ const uuid = require('uuid')
 const { genrateToken } = require('./auth')
 
 const handleLogin = async (req, res) => {
+    const cookie = req.cookies
+    console.log(cookie)
     const { email, password } = req.body;
     try {
         const user = await Users.findOne({ email, password })
@@ -11,7 +13,7 @@ const handleLogin = async (req, res) => {
         else {
             const token = genrateToken(user)
             res.cookie("token", token)
-            res.redirect("/urls")
+            res.json({msg:'success'})
         }
     }
     catch (err) {
